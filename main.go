@@ -11,6 +11,12 @@ func main() {
 		usage()
 	}
 
+	wordsTrackerFile := getHomeDir() + "/english_words/words.txt"
+	trash := getHomeDir() + "/english_words/trash.txt"
+	sentence := os.Args[1]
+
+	CheckIfSentenceExists(sentence, wordsTrackerFile, trash)
+	writeSentenceOnFile(sentence, wordsTrackerFile)
 }
 
 func check(e error) {
