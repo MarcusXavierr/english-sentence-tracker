@@ -24,3 +24,9 @@ func usage() {
 	flag.PrintDefaults()
 	os.Exit(2)
 }
+
+func writeSentenceOnFile(sentence, filePath string) {
+	err := WriteFile(sentence, filePath)
+	check(err)
+	fmt.Printf("Sentence '%s' added successfully\n", sentence)
+}

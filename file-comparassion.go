@@ -1,10 +1,21 @@
 package main
 
 import (
+	"fmt"
+	"os"
 	"strings"
 )
 
-func HasSentence(sentence, filePath string) bool {
+func CheckIfSentenceExists(sentence string, filePathList ...string) {
+	for index := range filePathList {
+		if hasSentence(sentence, filePathList[index]) {
+			fmt.Fprintf(os.Stderr, "sentence '%s' already exists on file %s\n", sentence, filePathList[index])
+			os.Exit(3)
+		}
+	}
+}
+
+func hasSentence(sentence, filePath string) bool {
 	buffer := ReadFile(filePath)
 	return verifyIsSentenceExists(sentence, buffer)
 }

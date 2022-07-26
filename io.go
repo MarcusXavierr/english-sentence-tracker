@@ -1,6 +1,9 @@
 package main
 
-import "os"
+import (
+	"os"
+	"os/user"
+)
 
 func ReadFile(filePath string) string {
 	buffer, err := os.ReadFile(filePath)
@@ -14,4 +17,10 @@ func WriteFile(sentence, filepath string) error {
 	_, err := file.WriteString(sentence)
 	check(err)
 	return file.Close()
+}
+
+func getHomeDir() string {
+	usr, err := user.Current()
+	check(err)
+	return usr.HomeDir
 }
