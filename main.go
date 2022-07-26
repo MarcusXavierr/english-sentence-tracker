@@ -1,8 +1,12 @@
 package main
 
-import "fmt"
-
 func main() {
-	fmt.Println("Hello, world")
-	fmt.Println("I'm creating my first go project")
+	err := WriteFile("Testando\n", "/tmp/test")
+	check(err)
+}
+
+func check(e error) {
+	if e != nil {
+		panic(e)
+	}
 }
