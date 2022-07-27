@@ -4,6 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"os"
+
+	"github.com/fatih/color"
 )
 
 func main() {
@@ -26,7 +28,8 @@ func check(e error) {
 }
 
 func usage() {
-	fmt.Fprintf(os.Stderr, "usage: %s \"sentence to add\"\n", os.Args[0])
+	var message string = fmt.Sprintf("usage: %s \"sentence to add\"\n", os.Args[0])
+	color.Red(message)
 	flag.PrintDefaults()
 	os.Exit(2)
 }
@@ -34,5 +37,6 @@ func usage() {
 func writeSentenceOnFile(sentence, filePath string) {
 	err := WriteFile(sentence, filePath)
 	check(err)
-	fmt.Printf("Sentence '%s' added successfully\n", sentence)
+	message := fmt.Sprintf("Sentence '%s' added successfully\n", sentence)
+	color.Green(message)
 }
