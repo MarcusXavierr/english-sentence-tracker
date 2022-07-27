@@ -14,10 +14,9 @@ func main() {
 	wordsTrackerFile := getHomeDir() + "/english_words/words.txt"
 	trash := getHomeDir() + "/english_words/trash.txt"
 	sentence := os.Args[1]
-	fmt.Printf("before")
+
 	CheckIfSentenceExists(sentence, wordsTrackerFile, trash)
 	writeSentenceOnFile(sentence, wordsTrackerFile)
-	fmt.Printf("after")
 }
 
 func check(e error) {
