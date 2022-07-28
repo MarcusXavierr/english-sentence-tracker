@@ -1,15 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"strings"
+
+	"github.com/fatih/color"
 )
 
 func CheckIfSentenceExists(sentence string, filePathList ...string) {
 	for index := range filePathList {
 		if hasSentence(sentence, filePathList[index]) {
-			fmt.Fprintf(os.Stderr, "sentence '%s' already exists on file %s\n", sentence, filePathList[index])
+			color.Red("sentence '%s' already exists on file %s\n", sentence, filePathList[index])
 			os.Exit(3)
 		}
 	}
