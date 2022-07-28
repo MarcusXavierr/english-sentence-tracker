@@ -13,12 +13,17 @@ func main() {
 		usage()
 	}
 
-	wordsTrackerFile := getHomeDir() + "/english_words/words.txt"
-	trash := getHomeDir() + "/english_words/trash.txt"
+	wordsTrackerFile, trash := getFiles()
 	sentence := os.Args[1]
 
 	CheckIfSentenceExists(sentence, wordsTrackerFile, trash)
 	writeSentenceOnFile(sentence, wordsTrackerFile)
+}
+
+func getFiles() (string, string) {
+	wordsTrackerFile := getHomeDir() + "/english_words/words.txt"
+	trash := getHomeDir() + "/english_words/trash.txt"
+	return wordsTrackerFile, trash
 }
 
 func check(e error) {
