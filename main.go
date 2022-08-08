@@ -14,8 +14,13 @@ func main() {
 	wordsTrackerFile, trash := getFiles()
 	sentence := os.Args[1]
 
-	CheckIfSentenceExists(sentence, wordsTrackerFile, trash)
-	writeSentenceOnFile(sentence, wordsTrackerFile)
+	saveSentence(sentence, wordsTrackerFile, trash)
+}
+
+func saveSentence(sentence string, wordsTrackerFile string, trash string) {
+	if !CheckIfSentenceExists(os.Stdout, sentence, wordsTrackerFile, trash) {
+		writeSentenceOnFile(sentence, wordsTrackerFile)
+	}
 }
 
 func getFiles() (string, string) {
